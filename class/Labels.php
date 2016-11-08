@@ -21,9 +21,10 @@ class Labels {
     private $class;
     private $lstInputs;
     private $objTextArea;
+    private $objSelect;
 
 //    ## CONSTRUCTOR
-    public function __construct($text, $for = null, $required = true, $class = "", $lstInputs = array(), $objTextArea = null) {
+    public function __construct($text, $for = null, $required = true, $class = "", $lstInputs = array()) {
         $this->text = $text;
         $this->for = $for;
         $this->required = $required;
@@ -55,6 +56,10 @@ class Labels {
 
     public function getObjTextArea() {
         return $this->objTextArea;
+    }
+    
+    public function getObjSelect() {
+        return $this->objSelect;
     }
 
 //    ## SETTERS
@@ -91,11 +96,14 @@ class Labels {
     public function setObjTextArea($objTextArea) {
         $this->objTextArea = $objTextArea;
     }
+    
+    public function setObjSelect($objSelect) {
+        $this->objSelect = $objSelect;
+    }
 
 //    ## DISPLAY
 
     public function toString() {
-        $class = "";
         $res = "<label";
         if ($this->for != "" || $this->for != null) {
             $res.= " for='" . $this->for . "'";
@@ -112,10 +120,22 @@ class Labels {
                 $res.=$input->toString();
             }
         }
-        if(!empty($this->objTextArea)) {
-            $res.=$this->objTextArea->toString();
-        }
+        $res.= $this->displayObj($this->objTextArea);
+        $res.= $this->displayObj($this->objSelect);        
         return $res;
+    }
+    
+    
+    
+    private function displayObj($obj)
+    {
+        if(!empty($obj)) {
+            return $obj->toString();
+        }
+        else
+        {
+            return "";
+        }
     }
 
 }

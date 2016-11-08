@@ -4,6 +4,8 @@ require_once "class/Forms.php";
 require_once "class/Labels.php";
 require_once "class/Inputs.php";
 require_once "class/TextAreas.php";
+require_once "class/Selects.php";
+require_once "class/Options.php";
 
 
 // ## instances 
@@ -25,6 +27,16 @@ $lblNom->addInput($inputNom);
 $inputEmail = new Inputs("email", "email", "jeremy.habit@gmail.com", "email");
 $lblEmail = new Labels("Email :", $inputEmail->getId());
 $lblEmail->addInput($inputEmail);
+
+$optionRouge = new Options("rouge");
+$optionJaune = new Options("jaune");
+$optionVert = new Options("vert");
+$optionBleu = new Options("bleu");
+$select = new Selects("select", "select", 5);
+$arrayOption = array($optionRouge, $optionJaune, $optionVert, $optionBleu);
+$select->setLstOptions($arrayOption);
+$lblSelect = new Labels("Vous aimez :", $select->getId());
+$lblSelect->setObjSelect($select);
 
 $inputComplet = new Inputs("complet", "complet", "", "checkbox", "complet", true);
 $inputBlanc = new Inputs("blanc", "blanc", "", "checkbox", "blanc", true);
@@ -49,7 +61,7 @@ $form->addLabel($lblQualite);
 $form->addLabel($lblPrenom);
 $form->addLabel($lblNom);
 $form->addLabel($lblEmail);
-
+$form->addLabel($lblSelect);
 $form->addLabel($lblPain);
 $form->addLabel($lblTxtarea);
 $form->addLabel($lblAction);
