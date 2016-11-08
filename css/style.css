@@ -1,0 +1,44 @@
+textarea {
+    resize:none;
+}
+
+form {
+    padding:15px;
+}
+
+form div.formGroup:last-of-type {
+    margin-bottom: 30px;
+}
+
+.formGroup label:first-child {
+    font-weight:bold;
+    display:block;
+    margin-bottom:15px;
+}
+
+.formGroup input[type="reset"], .formGroup input[type="submit"] {
+    margin:15px; 
+}
+
+input[type="text"], input[type="email"]{
+    width:100%;
+}
+
+.formGroup {
+    padding:15px;
+}
+
+label.required::after {
+    content:" *";
+}
+
+form.required::after {
+    content:"* : champ obligatoire";
+}
+
+.error, form.required::after, label.required::after {
+    color:red;
+}
+
+
+
